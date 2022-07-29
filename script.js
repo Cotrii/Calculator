@@ -19,8 +19,8 @@ function divide(a, b){
 
 function operate(total, nextNum, optStr){
     
-    if (optStr === '+')      total = add(total, b);
-    else if (optStr === '-') total = subtract(total, b);
-    else if (optStr === '*') total = multiply(total, b);
-    else if (optStr === '/') total = divide(total, b);
+    if (optStr === '+')      total = add(total, nextNum);
+    else if (optStr === '-') total = subtract(total, nextNum);
+    else if (optStr === '*') total = multiply(total, nextNum);
+    else if (optStr === '/') total = divide(total, nextNum);
 }
