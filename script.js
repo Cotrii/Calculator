@@ -21,6 +21,9 @@ function operate(total, nextNum, optStr){
     else if (optStr === '-') total = subtract(total, nextNum);
     else if (optStr === '*') total = multiply(total, nextNum);
     else if (optStr === '/') total = divide(total, nextNum);
+
+    let currNum = document.querySelector(".currNum");
+    currNum.textContent = total;
 }
 
 const btns = document.querySelectorAll(".blk");
@@ -65,6 +68,8 @@ function changeCurrent(){
     }   else if (this.textContent == '='){
         console.log("hello");
 
+
+        operate(parseInt(currNum.textContent), parseInt(prevNum.textContent), opt.textContent);
 
     }   else {
         
