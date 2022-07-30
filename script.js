@@ -1,5 +1,3 @@
-//1
-
 function add(a, b){
     return a + b;
 }
@@ -31,7 +29,14 @@ btns.forEach((btn) => {
     btn.addEventListener("click", changeCurrent); //parenthesis needs to be removed () for click to work
 });
 
-let optCnt = 0;
+// let optCnt = 0;
+
+function checkOperator(str){
+    if (str === '+' || str === '-' || str === '*' || str === '/')
+            return true;
+
+    return false;
+}
 
 function changeCurrent(){
     let currNum = document.querySelector(".currNum");
@@ -41,31 +46,32 @@ function changeCurrent(){
     
     if (currNum.textContent === '0' && this.textContent !== 'A/C'){
             currNum.textContent = this.textContent;
-            
     }   else if (this.textContent === 'A/C'){    
             console.log("hello");
             currNum.textContent = '0'; //clears currNum
             prevNum.textContent = '';
             opt.textContent = '';
-    }   else if (this.textContent === '+' || this.textContent === '-' ||
-                 this.textContent === '*' || this.textContent === '/' ){
+    }   else if ( checkOperator(this.textContent) ){    
+            // optCnt++;
+            // console.log(optCnt);
             
-            if (optCnt > 0){
-                console.log("hi " + optCnt);
-                optCnt = 0;
-            } else {
-            optCnt++; }
+            if ( !checkOperator(currNum.textContent) ){
+                prevNum.textContent = currNum.textContent;
+                opt.textContent = this.textContent;
+            } 
 
-            prevNum.textContent = currNum.textContent;
-            opt.textContent = this.textContent;
             currNum.textContent = '0';
-        
+
     }   else if (this.textContent == '='){
         console.log("hello");
 
 
     }   else {
-        currNum.textContent += this.textContent;
+        
+        if ( !checkOperator(currNum.textContent))
+            currNum.textContent += this.textContent;
 
     }
+
+    console.log("button pressed: " + this.textContent);
 }
