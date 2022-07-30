@@ -50,8 +50,9 @@ function changeCurrent(){
     if (currNum.textContent === '0' && this.textContent !== 'A/C' && this.textContent !== '+/-'){
 
             if (this.textContent !== '=')   {currNum.textContent = this.textContent;}
+            else { alert("hi"); }
             if (checkOperator(this.textContent)) {currNum.textContent = '0';}
-            
+
     }   else if (this.textContent === 'A/C'){    
             currNum.textContent = '0'; //clears currNum
             prevNum.textContent = '';
@@ -108,6 +109,10 @@ function changeCurrent(){
             }
 
     }
+
+    console.log("optCnt: " + optCnt);
+    console.log("prevNum: " + prevNum.textContent);
+    console.log("currNum: " + currNum.textContent);
 
     console.log("button pressed: " + this.textContent);
 }
