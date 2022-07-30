@@ -67,13 +67,8 @@ function changeCurrent(){
 
     }   else if (this.textContent == '='){
         console.log("hello");
-
-
         operate(parseInt(prevNum.textContent), parseInt(currNum.textContent), opt.textContent);
-
     }   else {
-        
-        if ( !checkOperator(currNum.textContent))
             currNum.textContent += this.textContent;
 
     }
