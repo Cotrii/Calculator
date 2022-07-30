@@ -79,6 +79,14 @@
     color: white;
 }
 
+button {
+    /* all: unset; */
+    border: none;
+}
+
+button:focus {
+    outline: orange 5px auto;
+  }
 
 .blk-eq {
     width: 165px;

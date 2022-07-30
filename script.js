@@ -24,3 +24,9 @@ function operate(total, nextNum, optStr){
     else if (optStr === '*') total = multiply(total, nextNum);
     else if (optStr === '/') total = divide(total, nextNum);
 }
+
+const btns = document.querySelectorAll(".blk");
+
+btns.forEach((btn) => {
+    btn.addEventListener("click", console.log("hello")); 
+});
