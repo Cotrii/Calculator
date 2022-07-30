@@ -52,6 +52,7 @@ function changeCurrent(){
             if (this.textContent !== '=')
                 currNum.textContent = this.textContent;
 
+
             if (checkOperator(this.textContent)) currNum.textContent = '0';
             
     }   else if (this.textContent === 'A/C'){    
@@ -85,6 +86,10 @@ function changeCurrent(){
             console.log("wat");
 
     }   else if (this.textContent === '='){
+
+        console.log("optCnt: " + optCnt);
+            console.log("prevNum: " + prevNum.textContent);
+            console.log("currNum: " + currNum.textContent);
         
         if (prevNum.textContent === '' && opt.textContent === '') {
             currNum.textContent = '0';
