@@ -79,6 +79,10 @@
     color: white;
 }
 
+.gr:hover {
+    background-color: #7D9D9C;
+}
+
 button {
     /* all: unset; */
     border: none;
