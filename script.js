@@ -23,7 +23,11 @@ function operate(total, nextNum, optStr){
     else if (optStr === '/') total = divide(total, nextNum);
 
     let currNum = document.querySelector(".currNum");
+    let prevNum = document.querySelector(".prevNum");
+    let opt = document.querySelector(".opt");
     currNum.textContent = total;
+    prevNum.textContent = '';
+    opt.textContent = '';
 
     document.getElementById("dec").disabled = false;
 }
@@ -83,7 +87,7 @@ function changeCurrent(){
                 if (prevNum.textContent !== NaN)    operate(parseInt(prevNum.textContent), parseInt(currNum.textContent), opt.textContent);
             } 
             
-            if ( !checkOperator(currNum.textContent) ){
+            if ( !checkOperator(currNum.textContent) && (!prevNum.textContent===NaN || currNum.textContent !== '' ) ){
                 prevNum.textContent = currNum.textContent;
                 opt.textContent = this.textContent;
             } 
