@@ -38,6 +38,7 @@ function changeCurrent(){
     
     if (currNum.textContent === '0' && this.textContent !== 'A/C'){
             currNum.textContent = this.textContent;
+            
     }   else if (this.textContent === 'A/C'){    
             console.log("hello");
             currNum.textContent = '0'; //clears currNum
@@ -49,7 +50,12 @@ function changeCurrent(){
             opt.textContent = this.textContent;
             currNum.textContent = '0';
         
-    }else {
+    }   else if (this.textContent == '='){
+        console.log("hello");
+
+
+    }   else {
         currNum.textContent += this.textContent;
+
     }
 }
