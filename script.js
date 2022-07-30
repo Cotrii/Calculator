@@ -24,6 +24,8 @@ function operate(total, nextNum, optStr){
 
     let currNum = document.querySelector(".currNum");
     currNum.textContent = total;
+
+    document.getElementById("dec").disabled = false;
 }
 
 const btns = document.querySelectorAll(".blk");
@@ -46,12 +48,20 @@ function changeCurrent(){
     let prevNum = document.querySelector(".prevNum");
     let opt = document.querySelector(".opt");
 
+    if (prevNum.textContent === NaN){
+        prevNum.textContent = '';
+    }
+
     
     if (currNum.textContent === '0' && this.textContent !== 'A/C' && this.textContent !== '+/-'){
 
             if (this.textContent !== '=')   {currNum.textContent = this.textContent;}
             else { alert("don't even try"); }
             if (checkOperator(this.textContent)) {currNum.textContent = '0';}
+
+            if (this.textContent === '.') { document.getElementById("dec").disabled = true;}
+
+            console.log("hello");
 
     }   else if (this.textContent === 'A/C'){    
             currNum.textContent = '0'; //clears currNum
@@ -67,17 +77,18 @@ function changeCurrent(){
 
             if (optCnt == 2){
                 optCnt = 0; 
-                operate(parseInt(prevNum.textContent), parseInt(currNum.textContent), opt.textContent);
+                if (prevNum.textContent !== NaN) operate(parseInt(prevNum.textContent), parseInt(currNum.textContent), opt.textContent);
             } else if (optCnt == 1 && prevNum.textContent !== ""){
 
-                if (prevNum !== NaN)
-                operate(parseInt(prevNum.textContent), parseInt(currNum.textContent), opt.textContent);
+                if (prevNum.textContent !== NaN)    operate(parseInt(prevNum.textContent), parseInt(currNum.textContent), opt.textContent);
             } 
             
             if ( !checkOperator(currNum.textContent) ){
                 prevNum.textContent = currNum.textContent;
                 opt.textContent = this.textContent;
             } 
+
+            if (prevNum.textContent === NaN) { prevNum.textContent = ''}
 
             currNum.textContent = '0';
             console.log("wat");
@@ -96,7 +107,7 @@ function changeCurrent(){
 
             if (this.textContent !== '+/-'){
                 currNum.textContent += this.textContent;
-                console.log("hello");
+                console.log("helloooo");
             }
 
             if (this.textContent === '+/-' && currNum.textContent !== '0'){
@@ -109,7 +120,6 @@ function changeCurrent(){
                     currNum.textContent = currNum.textContent.substring(1, currNum.textContent.length);
                 }
             }
-
     }
 
     console.log("optCnt: " + optCnt);
