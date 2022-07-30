@@ -69,7 +69,7 @@ function changeCurrent(){
         console.log("hello");
 
 
-        operate(parseInt(currNum.textContent), parseInt(prevNum.textContent), opt.textContent);
+        operate(parseInt(prevNum.textContent), parseInt(currNum.textContent), opt.textContent);
 
     }   else {
         
