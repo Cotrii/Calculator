@@ -28,5 +28,28 @@ function operate(total, nextNum, optStr){
 const btns = document.querySelectorAll(".blk");
 
 btns.forEach((btn) => {
-    btn.addEventListener("click", console.log("hello")); 
+    btn.addEventListener("click", changeCurrent); //parenthesis needs to be removed () for click to work
 });
+
+function changeCurrent(){
+    let currNum = document.querySelector(".currNum");
+    let prevNum = document.querySelector(".prevNum");
+    let opt = document.querySelector(".opt");
+    
+    if (currNum.textContent === '0' && this.textContent !== 'A/C'){
+            currNum.textContent = this.textContent;
+    }   else if (this.textContent === 'A/C'){    
+            console.log("hello");
+            currNum.textContent = '0'; //clears currNum
+            prevNum.textContent = '';
+            opt.textContent = '';
+    }   else if (this.textContent === '+' || this.textContent === '-' ||
+                 this.textContent === '*' || this.textContent === '/' ){
+            prevNum.textContent = currNum.textContent;
+            opt.textContent = this.textContent;
+            currNum.textContent = '0';
+        
+    }else {
+        currNum.textContent += this.textContent;
+    }
+}

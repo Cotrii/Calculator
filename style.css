@@ -31,17 +31,16 @@
     
 }
 
-.topNum {
-
+.top-cont {
     display: flex;
     justify-content: flex-end;
-
     margin: 10px;
 
     font-style: normal;
-    font-weight: 200;
     font-size: 20px;
+    gap: 5px;
 }
+
 
 .currNum {
     font-size: 48px;
@@ -108,4 +107,6 @@ button:active {
 .sec{
     display: flex;
 }
+
+
 
