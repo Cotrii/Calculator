@@ -47,28 +47,22 @@ function changeCurrent(){
     let opt = document.querySelector(".opt");
 
     
-    if (currNum.textContent === '0' && this.textContent !== 'A/C'){
+    if (currNum.textContent === '0' && this.textContent !== 'A/C' && this.textContent !== '+/-'){
 
-            if (this.textContent !== '=')
-                currNum.textContent = this.textContent;
-
-
-            if (checkOperator(this.textContent)) currNum.textContent = '0';
+            if (this.textContent !== '=')   {currNum.textContent = this.textContent;}
+            if (checkOperator(this.textContent)) {currNum.textContent = '0';}
             
     }   else if (this.textContent === 'A/C'){    
-            console.log("hello");
             currNum.textContent = '0'; //clears currNum
             prevNum.textContent = '';
             opt.textContent = '';
 
             console.log("2");
-
     }   else if ( checkOperator(this.textContent) ){    
             optCnt++;
-            console.log("optCnt: " + optCnt);
-            console.log("prevNum: " + prevNum.textContent);
-            console.log("currNum: " + currNum.textContent);
-
+            // console.log("optCnt: " + optCnt);
+            // console.log("prevNum: " + prevNum.textContent);
+            // console.log("currNum: " + currNum.textContent);
 
             if (optCnt == 2){
                 optCnt = 0; 
@@ -86,10 +80,6 @@ function changeCurrent(){
             console.log("wat");
 
     }   else if (this.textContent === '='){
-
-        console.log("optCnt: " + optCnt);
-            console.log("prevNum: " + prevNum.textContent);
-            console.log("currNum: " + currNum.textContent);
         
         if (prevNum.textContent === '' && opt.textContent === '') {
             currNum.textContent = '0';
@@ -100,7 +90,22 @@ function changeCurrent(){
 
     }   else {
             console.log("3");
-            currNum.textContent += this.textContent;
+
+            if (this.textContent !== '+/-'){
+                currNum.textContent += this.textContent;
+                console.log("hello");
+            }
+
+            if (this.textContent === '+/-' && currNum.textContent !== '0'){
+                if (currNum.textContent.charAt(0) !== '-'){
+
+                    let temp = currNum.textContent;
+                    currNum.textContent = '-';
+                    currNum.textContent += temp;
+                } else {
+                    currNum.textContent = currNum.textContent.substring(1, currNum.textContent.length);
+                }
+            }
 
     }
 
