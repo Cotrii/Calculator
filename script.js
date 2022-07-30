@@ -48,8 +48,12 @@ function changeCurrent(){
 
     
     if (currNum.textContent === '0' && this.textContent !== 'A/C'){
-            currNum.textContent = this.textContent;
-            console.log("1");
+
+            if (this.textContent !== '=')
+                currNum.textContent = this.textContent;
+
+            if (checkOperator(this.textContent)) currNum.textContent = '0';
+            
     }   else if (this.textContent === 'A/C'){    
             console.log("hello");
             currNum.textContent = '0'; //clears currNum
@@ -66,12 +70,11 @@ function changeCurrent(){
 
 
             if (optCnt == 2){
-                optCnt = 0; //if opt1 its not gonna let the prev content to operate
-
+                optCnt = 0; 
                 operate(parseInt(prevNum.textContent), parseInt(currNum.textContent), opt.textContent);
             } else if (optCnt == 1 && prevNum.textContent !== ""){
                 operate(parseInt(prevNum.textContent), parseInt(currNum.textContent), opt.textContent);
-            }
+            } 
             
             if ( !checkOperator(currNum.textContent) ){
                 prevNum.textContent = currNum.textContent;
@@ -79,14 +82,19 @@ function changeCurrent(){
             } 
 
             currNum.textContent = '0';
+            console.log("wat");
 
     }   else if (this.textContent === '='){
-        console.log("hello");
-        operate(parseInt(prevNum.textContent), parseInt(currNum.textContent), opt.textContent);
+        
+        if (prevNum.textContent === '' && opt.textContent === '') {
+            currNum.textContent = '0';
+            console.log("hello");
+        } else {
+            operate(parseInt(prevNum.textContent), parseInt(currNum.textContent), opt.textContent);
+        }
+
     }   else {
-
             console.log("3");
-
             currNum.textContent += this.textContent;
 
     }
