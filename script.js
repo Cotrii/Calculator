@@ -32,7 +32,7 @@ btns.forEach((btn) => {
     btn.addEventListener("click", changeCurrent); //parenthesis needs to be removed () for click to work
 });
 
-// let optCnt = 0;
+let optCnt = 0;
 
 function checkOperator(str){
     if (str === '+' || str === '-' || str === '*' || str === '/')
@@ -55,8 +55,8 @@ function changeCurrent(){
             prevNum.textContent = '';
             opt.textContent = '';
     }   else if ( checkOperator(this.textContent) ){    
-            // optCnt++;
-            // console.log(optCnt);
+            optCnt++;
+            console.log(optCnt);
             
             if ( !checkOperator(currNum.textContent) ){
                 prevNum.textContent = currNum.textContent;
