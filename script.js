@@ -69,6 +69,8 @@ function changeCurrent(){
                 optCnt = 0; 
                 operate(parseInt(prevNum.textContent), parseInt(currNum.textContent), opt.textContent);
             } else if (optCnt == 1 && prevNum.textContent !== ""){
+
+                if (prevNum !== NaN)
                 operate(parseInt(prevNum.textContent), parseInt(currNum.textContent), opt.textContent);
             } 
             
