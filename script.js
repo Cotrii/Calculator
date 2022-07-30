@@ -50,7 +50,7 @@ function changeCurrent(){
     if (currNum.textContent === '0' && this.textContent !== 'A/C' && this.textContent !== '+/-'){
 
             if (this.textContent !== '=')   {currNum.textContent = this.textContent;}
-            else { alert("hi"); }
+            else { alert("don't even try"); }
             if (checkOperator(this.textContent)) {currNum.textContent = '0';}
 
     }   else if (this.textContent === 'A/C'){    
