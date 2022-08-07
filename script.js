@@ -67,8 +67,14 @@ changeSignBtn.addEventListener("click", changeSign);
 function changeCurrentNum(){
 
     if (currNum.textContent == '0'){
+
+        if (this.textContent == '.'){
+            currNum.textContent += '.';
+            return;
+        }
         currNum.textContent = this.textContent;
-    } else {
+    } 
+    else {
         currNum.textContent += this.textContent;
     }
 }
