@@ -26,3 +26,23 @@ function operate(total, nextNum, optStr){
 
 console.log(document.querySelector('[data-num]').textContent);
 
+const numButtons = document.querySelectorAll('[data-num'); //number buttons
+const currNum = document.querySelector(".currNum"); //current Num
+
+numButtons.forEach((btn) => {
+    btn.addEventListener("click", changeCurrentNum);
+})
+
+function changeCurrentNum(){
+
+    if (currNum.textContent == '0'){
+        currNum.textContent = this.textContent;
+    } else {
+        currNum.textContent += this.textContent;
+    }
+}
+
+
+
+
+
