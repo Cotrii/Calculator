@@ -71,7 +71,10 @@ let num = 0;
 
 function setOpt(){
 
-    if (currOpt.textContent === ''){
+    if (prevNum.textContent === ''){
+        return;
+    }
+    else if (currOpt.textContent === ''){
         currOpt.textContent = this.textContent;
 
         if (prevNum.textContent === '' ){
