@@ -24,8 +24,11 @@ function operate(total, nextNum, optStr){
     else if (optStr === '-') total = subtract(total, nextNum);
     else if (optStr === '*') total = multiply(total, nextNum);
     else if (optStr === '/') {
-        // if (nextNum == 0) return null;
-        // else 
+        if (nextNum == 0) {
+            alert("don't divide by 0!");
+            return null;
+        }
+        else 
         total = divide(total, nextNum);
     };
 
@@ -71,7 +74,7 @@ let num = 0;
 
 function setOpt(){
 
-    if (prevNum.textContent === ''){
+    if (prevNum.textContent === '' && currNum.textContent === '0'){
         return;
     }
     else if (currOpt.textContent === ''){
