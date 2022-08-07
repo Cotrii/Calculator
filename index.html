@@ -11,49 +11,54 @@
                 <!-- <div class="topNum">100 - 10 </div> -->
                 <div class="top-cont">
                     <div class="prevNum"></div>
-                    <div class="opt"></div>
+                    <div class="currOpt"></div>
                 </div>
                 <div class="currNum">0</div>
             </div>
 
             <div class="blocks-cont">
                 <div class="first sec">
-                    <button class="blk">A/C</button>
-                    <button class="blk">+/-</button>
-                    <button class="blk">%</button>
-                    <button class="blk gr">/</button>
+                    <button class="blk" id="clr">AC</button>
+                    <button class="blk" id="changeSign">+/-</button>
+                    <button class="blk" id="del">X</button>
+                    <button class="blk opt">/</button>
                 </div>
 
                 <div class="second sec">
-                    <button class="blk">7</button>
-                    <button class="blk">8</button>
-                    <button class="blk">9</button>
-                    <button class="blk gr">*</button>
+                    <button class="blk" data-num>7</button>
+                    <button class="blk" data-num>8</button>
+                    <button class="blk" data-num>9</button>
+                    <button class="blk opt">*</button>
                 </div>
 
                 <div class="third sec">
-                    <button class="blk">4</button>
-                    <button class="blk">5</button>
-                    <button class="blk">6</button>
-                    <button class="blk gr">-</button>
+                    <button class="blk" data-num>4</button>
+                    <button class="blk" data-num>5</button>
+                    <button class="blk" data-num>6</button>
+                    <button class="blk opt">-</button>
                 </div>
 
                 <div class="fourth sec">
-                    <button class="blk">1</button>
-                    <button class="blk">2</button>
-                    <button class="blk">3</button>
-                    <button class="blk gr">+</button>
+                    <button class="blk" data-num>1</button>
+                    <button class="blk" data-num>2</button>
+                    <button class="blk" data-num>3</button>
+                    <button class="blk opt">+</button>
                 </div>
 
                 <div class="fifth sec">
-                    <button class="blk">0</button>
+                    <button class="blk" data-num>0</button>
                     <button class="blk" id="dec">.</button>
                     <button class="blk eq">=</button>
                 </div>
                 
 
             </div>
+
+            
         </div>
+
+        <div class="">Cotrii © 2022</div>
+        
         <script src="script.js"></script>
     </body>
 </html>

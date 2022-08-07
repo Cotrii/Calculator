@@ -16,119 +16,146 @@ function divide(a, b){
 
 
 function operate(total, nextNum, optStr){
+
+    total = Number(total);
+    nextNum = Number(nextNum);
     
     if (optStr === '+')      total = add(total, nextNum);
     else if (optStr === '-') total = subtract(total, nextNum);
     else if (optStr === '*') total = multiply(total, nextNum);
-    else if (optStr === '/') total = divide(total, nextNum);
-
-    let currNum = document.querySelector(".currNum");
-    let prevNum = document.querySelector(".prevNum");
-    let opt = document.querySelector(".opt");
-    currNum.textContent = total;
-    prevNum.textContent = '';
-    opt.textContent = '';
-
-    document.getElementById("dec").disabled = false;
-}
-
-const btns = document.querySelectorAll(".blk");
-
-btns.forEach((btn) => {
-    btn.addEventListener("click", changeCurrent); //parenthesis needs to be removed () for click to work
-});
-
-let optCnt = 0;
-
-function checkOperator(str){
-    if (str === '+' || str === '-' || str === '*' || str === '/')
-            return true;
-
-    return false;
-}
-
-function changeCurrent(){
-    let currNum = document.querySelector(".currNum");
-    let prevNum = document.querySelector(".prevNum");
-    let opt = document.querySelector(".opt");
-
-    if (prevNum.textContent === NaN){
-        prevNum.textContent = '';
-    }
-
-    
-    if (currNum.textContent === '0' && this.textContent !== 'A/C' && this.textContent !== '+/-'){
-
-            if (this.textContent !== '=')   {currNum.textContent = this.textContent;}
-            else { alert("don't even try"); }
-            if (checkOperator(this.textContent)) {currNum.textContent = '0';}
-
-            if (this.textContent === '.') { document.getElementById("dec").disabled = true;}
-
-            console.log("hello");
-
-    }   else if (this.textContent === 'A/C'){    
-            currNum.textContent = '0'; //clears currNum
-            prevNum.textContent = '';
-            opt.textContent = '';
-
-            console.log("2");
-    }   else if ( checkOperator(this.textContent) ){    
-            optCnt++;
-            // console.log("optCnt: " + optCnt);
-            // console.log("prevNum: " + prevNum.textContent);
-            // console.log("currNum: " + currNum.textContent);
-
-            if (optCnt == 2){
-                optCnt = 0; 
-                if (prevNum.textContent !== NaN) operate(parseInt(prevNum.textContent), parseInt(currNum.textContent), opt.textContent);
-            } else if (optCnt == 1 && prevNum.textContent !== ""){
-
-                if (prevNum.textContent !== NaN)    operate(parseInt(prevNum.textContent), parseInt(currNum.textContent), opt.textContent);
-            } 
-            
-            if ( !checkOperator(currNum.textContent) && (!prevNum.textContent===NaN || currNum.textContent !== '' ) ){
-                prevNum.textContent = currNum.textContent;
-                opt.textContent = this.textContent;
-            } 
-
-            if (prevNum.textContent === NaN) { prevNum.textContent = ''}
-
-            currNum.textContent = '0';
-            console.log("wat");
-
-    }   else if (this.textContent === '='){
-        
-        if (prevNum.textContent === '' && opt.textContent === '') {
-            currNum.textContent = '0';
-            console.log("hello");
-        } else {
-            operate(parseInt(prevNum.textContent), parseInt(currNum.textContent), opt.textContent);
+    else if (optStr === '/') {
+        if (nextNum == 0) {
+            alert("don't divide by 0!");
+            return null;
         }
+        else 
+        total = divide(total, nextNum);
+    };
 
-    }   else {
-            console.log("3");
-
-            if (this.textContent !== '+/-'){
-                currNum.textContent += this.textContent;
-                console.log("helloooo");
-            }
-
-            if (this.textContent === '+/-' && currNum.textContent !== '0'){
-                if (currNum.textContent.charAt(0) !== '-'){
-
-                    let temp = currNum.textContent;
-                    currNum.textContent = '-';
-                    currNum.textContent += temp;
-                } else {
-                    currNum.textContent = currNum.textContent.substring(1, currNum.textContent.length);
-                }
-            }
-    }
-
-    console.log("optCnt: " + optCnt);
-    console.log("prevNum: " + prevNum.textContent);
-    console.log("currNum: " + currNum.textContent);
-
-    console.log("button pressed: " + this.textContent);
+    return total.toString();
 }
+
+
+const numButtons = document.querySelectorAll('[data-num]'); //number buttons
+const currNum = document.querySelector(".currNum"); //current Num
+
+const prevNum = document.querySelector(".prevNum");
+
+
+const optButtons = document.querySelectorAll(".opt");
+
+const equalsBtn = document.querySelector(".eq");
+// let currentOpt;
+let currOpt = document.querySelector(".currOpt");
+const clrBtn = document.querySelector("#clr");
+const changeSignBtn = document.querySelector("#changeSign");
+const decml = document.querySelector("#dec");
+const delBtn = document.querySelector("#del");
+
+numButtons.forEach((btn) => {
+    btn.addEventListener("click", changeCurrentNum);
+})
+
+optButtons.forEach((btn) => {
+    btn.addEventListener("click", setOpt);
+})
+
+equalsBtn.addEventListener("click", evaluate);
+clrBtn.addEventListener("click", clearContent);
+changeSignBtn.addEventListener("click", changeSign);
+decml.addEventListener("click", addDecimal);
+delBtn.addEventListener("click", backspace);
+
+//example: 2%.
+
+function backspace(){
+    currNum.textContent = (currNum.textContent).substring(0, currNum.textContent.length - 1);
+
+    if (currNum.textContent.length == 0){
+        currNum.textContent = '0';
+    }
+}
+
+function addDecimal(){
+    currNum.textContent += '.';
+    decml.disabled = true;
+}
+
+function changeCurrentNum(){
+
+    if (currNum.textContent == '0'){
+
+        // if (this.textContent == '.'){
+        //     currNum.textContent += '.';
+        //     decml.disabled = true;
+        //     return;
+        // }
+        currNum.textContent = this.textContent;
+    } 
+    else {
+        currNum.textContent += this.textContent;
+    }
+}
+
+let num = 0;
+
+function setOpt(){
+
+    if (prevNum.textContent === '' && currNum.textContent === '0'){
+        return;
+    }
+    else if (currOpt.textContent === ''){
+        currOpt.textContent = this.textContent;
+
+        if (prevNum.textContent === '' ){
+            prevNum.textContent = currNum.textContent;
+            currNum.textContent = '0';
+        } 
+
+        decml.disabled = true;
+    } 
+    else {
+            num = operate(prevNum.textContent, currNum.textContent, currOpt.textContent);
+
+            prevNum.textContent = num;
+            currOpt.textContent = this.textContent;
+            //this is setOp, so assume that there is a next operator in line
+
+            currNum.textContent = '0';
+            decml.disabled = false;
+    }
+}
+
+function evaluate(){
+    num = operate(prevNum.textContent, currNum.textContent, currOpt.textContent);
+
+    currNum.textContent = num;
+    prevNum.textContent = null;
+    currOpt.textContent = null;
+
+    decml.disabled = false;
+}
+
+function clearContent(){
+    currNum.textContent = '0';
+    prevNum.textContent = null;
+    currOpt.textContent = null;
+}
+
+function changeSign(){
+    if (this.textContent === '+/-' && currNum.textContent !== '0'){
+        if (currNum.textContent.charAt(0) !== '-'){
+
+            let temp = currNum.textContent;
+            currNum.textContent = '-';
+            currNum.textContent += temp;
+        } else {
+            currNum.textContent = currNum.textContent.substring(1, currNum.textContent.length);
+        }
+    }
+}
+
+
+
+
+
