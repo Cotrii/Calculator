@@ -45,6 +45,8 @@ const equalsBtn = document.querySelector(".eq");
 // let currentOpt;
 let currOpt = document.querySelector(".currOpt");
 
+const clrBtn = document.querySelector("#clr");
+
 numButtons.forEach((btn) => {
     btn.addEventListener("click", changeCurrentNum);
 })
@@ -54,6 +56,7 @@ optButtons.forEach((btn) => {
 })
 
 equalsBtn.addEventListener("click", evaluate);
+clrBtn.addEventListener("click", clearContent);
 
 function changeCurrentNum(){
 
@@ -93,6 +96,13 @@ function evaluate(){
     currNum.textContent = num;
     prevNum.textContent = null;
     currOpt.textContent = null;
+}
+
+function clearContent(){
+    currNum.textContent = '0';
+    prevNum.textContent = null;
+    currOpt.textContent = null;
+
 }
 
 
