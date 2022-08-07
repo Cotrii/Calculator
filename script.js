@@ -50,6 +50,7 @@ let currOpt = document.querySelector(".currOpt");
 const clrBtn = document.querySelector("#clr");
 const changeSignBtn = document.querySelector("#changeSign");
 const decml = document.querySelector("#dec");
+const delBtn = document.querySelector("#del");
 
 numButtons.forEach((btn) => {
     btn.addEventListener("click", changeCurrentNum);
@@ -63,6 +64,17 @@ equalsBtn.addEventListener("click", evaluate);
 clrBtn.addEventListener("click", clearContent);
 changeSignBtn.addEventListener("click", changeSign);
 decml.addEventListener("click", addDecimal);
+delBtn.addEventListener("click", backspace);
+
+//example: 2%.
+
+function backspace(){
+    currNum.textContent = (currNum.textContent).substring(0, currNum.textContent.length - 1);
+
+    if (currNum.textContent.length == 0){
+        currNum.textContent = '0';
+    }
+}
 
 function addDecimal(){
     currNum.textContent += '.';
