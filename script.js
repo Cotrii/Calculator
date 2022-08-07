@@ -50,6 +50,8 @@ let currOpt = document.querySelector(".currOpt");
 
 const clrBtn = document.querySelector("#clr");
 
+const changeSignBtn = document.querySelector("#changeSign");
+
 numButtons.forEach((btn) => {
     btn.addEventListener("click", changeCurrentNum);
 })
@@ -60,6 +62,7 @@ optButtons.forEach((btn) => {
 
 equalsBtn.addEventListener("click", evaluate);
 clrBtn.addEventListener("click", clearContent);
+changeSignBtn.addEventListener("click", changeSign);
 
 function changeCurrentNum(){
 
@@ -108,7 +111,19 @@ function clearContent(){
     currNum.textContent = '0';
     prevNum.textContent = null;
     currOpt.textContent = null;
+}
 
+function changeSign(){
+    if (this.textContent === '+/-' && currNum.textContent !== '0'){
+        if (currNum.textContent.charAt(0) !== '-'){
+
+            let temp = currNum.textContent;
+            currNum.textContent = '-';
+            currNum.textContent += temp;
+        } else {
+            currNum.textContent = currNum.textContent.substring(1, currNum.textContent.length);
+        }
+    }
 }
 
 
