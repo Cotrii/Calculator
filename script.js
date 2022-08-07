@@ -22,3 +22,7 @@ function operate(total, nextNum, optStr){
     else if (optStr === '*') total = multiply(total, nextNum);
     else if (optStr === '/') total = divide(total, nextNum);
 }
+
+
+console.log(document.querySelector('[data-num]').textContent);
+
