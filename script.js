@@ -47,10 +47,9 @@ const optButtons = document.querySelectorAll(".opt");
 const equalsBtn = document.querySelector(".eq");
 // let currentOpt;
 let currOpt = document.querySelector(".currOpt");
-
 const clrBtn = document.querySelector("#clr");
-
 const changeSignBtn = document.querySelector("#changeSign");
+const decml = document.querySelector("#dec");
 
 numButtons.forEach((btn) => {
     btn.addEventListener("click", changeCurrentNum);
@@ -63,15 +62,22 @@ optButtons.forEach((btn) => {
 equalsBtn.addEventListener("click", evaluate);
 clrBtn.addEventListener("click", clearContent);
 changeSignBtn.addEventListener("click", changeSign);
+decml.addEventListener("click", addDecimal);
+
+function addDecimal(){
+    currNum.textContent += '.';
+    decml.disabled = true;
+}
 
 function changeCurrentNum(){
 
     if (currNum.textContent == '0'){
 
-        if (this.textContent == '.'){
-            currNum.textContent += '.';
-            return;
-        }
+        // if (this.textContent == '.'){
+        //     currNum.textContent += '.';
+        //     decml.disabled = true;
+        //     return;
+        // }
         currNum.textContent = this.textContent;
     } 
     else {
