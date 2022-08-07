@@ -99,6 +99,8 @@ function setOpt(){
             prevNum.textContent = currNum.textContent;
             currNum.textContent = '0';
         } 
+
+        decml.disabled = true;
     } 
     else {
             num = operate(prevNum.textContent, currNum.textContent, currOpt.textContent);
@@ -108,6 +110,7 @@ function setOpt(){
             //this is setOp, so assume that there is a next operator in line
 
             currNum.textContent = '0';
+            decml.disabled = false;
     }
 }
 
@@ -117,6 +120,8 @@ function evaluate(){
     currNum.textContent = num;
     prevNum.textContent = null;
     currOpt.textContent = null;
+
+    decml.disabled = false;
 }
 
 function clearContent(){
