@@ -4,10 +4,10 @@
     --num: #E4DCCF;
 }
 
-/* body {
+body {
     display: flex;
     justify-content: center;
-} */
+}
 
 .container {
     width: 375px;
